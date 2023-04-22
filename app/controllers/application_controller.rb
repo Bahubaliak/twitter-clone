@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :redirect_to_username_form, if: ~> { user_signed_in? & current_user.username.blank? }
+  before_action :redirect_to_username_form, if: -> { user_signed_in? & current_user.username.blank? }
   
   protected
 
@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_username_form
-    redirect_to_new_username_path
+    return if controller_name == "usernames"
+    redirect_to new_username_path
   end
 end
