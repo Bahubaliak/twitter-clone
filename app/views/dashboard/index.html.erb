@@ -1,13 +1,59 @@
-  <h1>You are signed in</h1>
-  <%= link_to "Log out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "btn btn-primary btn-lg"%>
-
-  <%= form_with model: Tweet.new, url: tweets_path, method: :post, local:true do |f| %>
-    <%=  f.text_field :body %>
-    <%= f.submit %>
-  <% end %>
-
-  <ul>
-    <% Tweet.find_each do |tweet| %>
-      <li><%= tweet.body %></li>
-    <% end %>
-  </ul>
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <div class='d-flex flex-column'>
+            <%= link_to root_path, class: 'mt-2 mb-4' do%>  <i class="fa fa-twitter fa-2x" aria-hidden="true"></i>
+            <% end %>
+          <div class='d-flex mb-3'>
+            <%= link_to root_path, class: 'mt-2' do%>
+              <i class="fa fa-home" aria-hidden="true"><span class='mx-3 fs-4 text-black'>Home</span></i>
+            <% end %>
+          </div>
+          <div class='d-flex mb-3'>
+            <%= link_to root_path, class: 'mt-2' do%>
+              <i class="fa fa-tag"><span class='mx-3 fs-4 text-black'>Explore</span></i>
+             <% end %>
+          </div>
+          <div class='d-flex mb-3'>
+            <%= link_to root_path, class: 'mt-2' do%>
+              <i class="fa fa-bell" aria-hidden="true"><span class='mx-3 fs-4 text-black'>Notifications</span></i>
+            <% end %>
+          </div>
+           <div class='d-flex mb-3'>
+            <%= link_to root_path, class: 'mt-2' do%>
+              <i class="fa fa-comment" aria-hidden="true"><span class='mx-3 fs-4 text-black'>Messages</span></i>
+            <% end %>
+          </div>
+          <div class='d-flex mb-3'>
+            <%= link_to root_path, class: 'mt-2' do%>
+              <i class="fa fa-bookmark" aria-hidden="true"><span class='mx-3 fs-4 text-black'>Bookmarks</span></i>
+            <% end %>
+          </div>
+          <div class='d-flex mb-3'>
+             <%= link_to root_path, class: 'mt-2' do%>
+              <i class="fa fa-user" aria-hidden="true"><span class='mx-3 fs-4 text-black'>Profile</span></i>
+            <% end %>
+          </div>
+          <div class='d-flex mb-3'>
+            <%= button_tag "Tweet", class: "btn btn-lg btn-primary rounded-pill mx-1"%>
+          </div>
+        </div>
+       
+        <%= link_to "Log out", destroy_user_session_path, data: { "turbo-method": :delete }, class: "btn btn-primary btn-lg"%>  
+    </div>
+    <div class="col">
+      <%= form_with model: Tweet.new, url: tweets_path, method: :post, local:true do |f| %>
+        <%=  f.text_field :body %>
+        <%= f.submit %>
+      <% end %>
+      <ul>
+        <% Tweet.find_each do |tweet| %>
+          <li><%= tweet.body %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+</div>
